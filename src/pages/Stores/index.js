@@ -32,7 +32,7 @@ const Stores = () => {
       <Grid container spacing={3}>
         {business.data.map((store) => 
           <Grid key={store._id} item xs={12}>
-            <Card data={store} />
+            <Card data={store}/>
           </Grid>
         )}
       </Grid>

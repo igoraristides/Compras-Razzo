@@ -24,7 +24,6 @@ const CardGrid = ({data}) => {
                     {data.description}
                 </StoreDescription>
             </StoreBox>
-            <StoreAdress/>
         </Content>
 
     </Container>

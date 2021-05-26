@@ -2,11 +2,11 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
 display: flex;
-flex-direction: column;
+flex-direction: row;
 align-items: flex-start;
 padding: 16px;
 
-position: absolute;
+position: static;
 width: 290px;
 height: 99px;
 left: 35px;
@@ -28,7 +28,7 @@ border-radius: 7px;
 export const Content =  styled.div`
 display: flex;
 flex-direction: column;
-border-left: 16px;  
+margin-left: 16px;  
 `;
 
 export const StoreBox =  styled.div`
