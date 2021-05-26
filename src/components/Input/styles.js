@@ -12,12 +12,15 @@ export const Field = styled.input`
 
   font-size: 16px;
 
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 14px;
+  margin-bottom: 40px;
 
-  border-radius: 4px;
+  border-radius: 7px;
   transition: border-color 200ms linear;
-  border: 1px solid #e0e0e0;
+  
+  border: 1px solid #E5E4E6;
+  box-sizing: border-box;
+
 
   :hover, :focus {
     border-color: #aeaeb2;

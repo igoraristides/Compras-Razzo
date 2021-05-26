@@ -8,11 +8,9 @@ import { Pagination } from '@material-ui/lab';
 
 import Card from '../../components/Card/CardGrid'
 import Grid from '@material-ui/core/Grid';
-import {
-  SearchContainer,
-  Container,
-} from './styles';
-
+import { Container } from './styles';
+import Input from '../../components/Input';
+import Form from '../../components/Form';
 
 
 const Stores = () => {
@@ -29,6 +27,14 @@ const Stores = () => {
   }, []);
   return (
     <Container>
+        <Form width={350} ref={formRef}>
+        <Input
+          name="search"
+          placeholder="Busque por um produto"
+          variant="border"
+          fullWidth
+        />
+        </Form>
       <Grid container spacing={3}>
         {business.data.map((store) => 
           <Grid key={store._id} item xs={12} md = {4}>
