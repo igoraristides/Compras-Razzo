@@ -3,14 +3,13 @@ import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 
 import PublicRoute from './PublicRoute';
-import Home from '../pages/Home'
+import Stores from '../pages/Stores'
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PublicRoute path="/" component={Home} exact />
-        <PublicRoute path="*" component={NotFound} />
+        <PublicRoute path="/" component={Stores} exact />
       </Switch>
     </BrowserRouter>
   );

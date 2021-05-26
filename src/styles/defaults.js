@@ -10,5 +10,5 @@ export const Colors = {
 }
 
 export default {
-  font: "14px 'Quicksand', sans-serif",
+  font: "14px 'Gordita', sans-serif",
 };

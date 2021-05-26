@@ -13,7 +13,7 @@ export const Container = styled.div`
     bottom: 0;
     width: 0px;
     height: 2px;
-    background-color: #000;
+    background-color: #249CF2;
     transition: width 200ms linear;
   }
 

@@ -1,20 +1,18 @@
 import React, { useState, useRef } from 'react';
 import { useLocation, BrowserRouter as Router } from 'react-router-dom';
 import logo from '../../assets/logo-1.svg';
-import compra from '../../assets/compras.svg';
+
 
 import Input from '../Input';
 
 import Avatar from '../Avatar';
 import Link from './Link';
+import Cart from '../Cart';
 
 import {
   Container,
   Navigation,
   Logo,
-  MenuMobileContainer,
-  Img,
-  SearchContainer,
   } from './styles';
 
 
@@ -29,7 +27,6 @@ const Menu = () => {
   const { pathname } = useLocation();
   const formRef = useRef(null);
     return (
-      <>
       <Container>
         <Navigation>
           <Logo src={logo} />
@@ -43,10 +40,9 @@ const Menu = () => {
           ))}
 
         </Navigation>
-        <Img src={compra} style={{ marginRight: '8px' }} />
-      <Avatar/>
+        <Cart/>
+        <Avatar size= {46}/>
       </Container>
-    </>
   );
 };
 

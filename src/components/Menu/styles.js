@@ -14,7 +14,7 @@ export const Container = styled.div`
   left: 0;
 
   width: 100%;
-  height: 65px;
+  height: 80px;
 
   background-color: #F7F9FC;
 
@@ -148,13 +148,4 @@ export const Logout = styled.p`
   text-align: center;
 
   margin-top: 20px;
-`;
-export const SearchContainer = styled(Form)`
-  display: flex;
-  flex-direction: row;
-  margin: auto 0px;
-  margin-left: 100px;
-  width: auto;
-  height: 32px;
-  justify-content: right;
 `;
