@@ -5,6 +5,9 @@ import { Container, Content } from './styles';
 import PropTypes from 'prop-types';
 import Cart from '../../../components/Cart'
 import { Grid } from '@material-ui/core';
+//<Grid item xs = {12} md = {4}>
+   //         {children}
+    //          </Grid>
 
 const Public = ({children}) =>  {
     return (
@@ -13,9 +16,6 @@ const Public = ({children}) =>  {
           <Content>
             <Grid container spacing = {2}>
             <Grid item xs = {12} md = {8}>
-            {children}
-              </Grid>
-              <Grid item xs = {12} md = {4}>
             {children}
               </Grid>
             </Grid>

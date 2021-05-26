@@ -39,6 +39,7 @@ flex-direction: column;
 export const StoreName =  styled.p`
 font-size: 13px;
 line-height: 18px;
+color: #6D5D7A;
 `;
 export const StoreDescription =  styled.p`
 font-weight: 500;
@@ -46,7 +47,7 @@ font-size: 12px;
 line-height: 17px;
 color: #249CF2;
 `;
-export const StoreAdress =  styled.p`
+export const StoreAddress =  styled.p`
 font-size: 12px;
 line-height: 14px;  
 color: #979797;

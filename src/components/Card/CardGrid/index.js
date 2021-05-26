@@ -6,7 +6,7 @@ import {
   StoreIcon,
   StoreBox,
   StoreName,
-  StoreAdress,
+  StoreAddress,
   StoreDescription,
 } from './styles';
 
@@ -24,6 +24,12 @@ const CardGrid = ({data}) => {
                     {data.description}
                 </StoreDescription>
             </StoreBox>
+            <StoreAddress>
+               Rua {data.address.street_name}, { data.address.street_number}
+            </StoreAddress>
+            <StoreAddress>
+            {data.address.neighborhood}
+            </StoreAddress>
         </Content>
 
     </Container>
