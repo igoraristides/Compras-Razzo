@@ -14,6 +14,7 @@ export const Field = styled.input`
 
   padding: 14px;
   margin-bottom: 40px;
+  margin-left: 20px;
 
   border-radius: 7px;
   transition: border-color 200ms linear;
@@ -44,6 +45,17 @@ export const Field = styled.input`
         border-color: #f83019;
       }
     `}
+
+    ${({ icon }) => {
+    if (icon !== '') {
+      return css`
+        background-image: (${icon});
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: center right 16px;
+      `;
+    }
+  }}
 `;
 
 export const Label = styled.label`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Form from '../../components/Form';
+import Form from '../../../components/Form';
 
 
 export const Container = styled.div`
@@ -15,4 +15,9 @@ margin-top: 30px;
 width: auto;
 height: 32px;
 justify-content: right;
+`;
+export const Content =  styled.div`
+display: flex;
+flex-direction: column;
+margin-left: 16px;  
 `;

@@ -6,12 +6,6 @@ flex-direction: row;
 align-items: flex-start;
 padding: 16px;
 
-position: static;
-width: 290px;
-height: 99px;
-left: 35px;
-top: 254px;
-
 border: 1px solid #E5E4E6;
 box-sizing: border-box;
 border-radius: 7px;

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 import masks from '../../utils/masks';
 
+import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
+
 import { Container, Label, Field, Error } from './styles';
 
 const Input = ({
@@ -86,6 +88,7 @@ Input.defaultProps = {
   noBorder: false,
   width: '',
   variant: '',
+  icon: '',
 };
 
 Input.propTypes = {
@@ -98,6 +101,7 @@ Input.propTypes = {
   width: PropTypes.string,
   mask: PropTypes.string,
   variant: PropTypes.string,
+  icon: PropTypes.string,
 };
 
 export default Input;

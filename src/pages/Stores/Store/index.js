@@ -3,14 +3,15 @@ import React, { useEffect, useState, useRef } from 'react';
 //import FadeIn from 'react-fade-in';
 //import { useLocation } from 'react-router-dom';
 
-import api from '../../services/api';
+import api from '../../../services/api';
 import { Pagination } from '@material-ui/lab';
 
-import Card from '../../components/Card/CardGrid'
+import Card from '../../../components/Card/CardGrid'
 import Grid from '@material-ui/core/Grid';
 import { Container } from './styles';
-import Input from '../../components/Input';
-import Form from '../../components/Form';
+import Input from '../../../components/Input';
+import Form from '../../../components/Form';
+import Link from '../../../components/Link';
 
 
 const Stores = () => {
@@ -32,7 +33,9 @@ const Stores = () => {
           name="search"
           placeholder="Busque por um produto"
           variant="border"
+          icon = "search"
           fullWidth
+
         />
         </Form>
       <Grid container spacing={3}>
@@ -49,3 +52,13 @@ const Stores = () => {
 export default Stores;
 
 //icon="search"
+
+    //        <Link
+          //      key= "/product/business/${id}"
+            //    to= "/product/business/${id}"
+            //    className="link"
+          //  >
+            //  <Card data={store}/>
+          //  </Link>
+            
+            
