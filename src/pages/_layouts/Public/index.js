@@ -19,7 +19,7 @@ const Public = ({children}) =>  {
             {children}
               </Grid>
             <Grid item xs = {12} md = {4}>
-              <Cart/>
+              <Cart cart/>
               </Grid>
             </Grid>
           </Content>

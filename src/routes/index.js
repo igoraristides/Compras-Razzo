@@ -11,7 +11,7 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <PublicRoute path="/" component={Store} exact />
-        <PublicRoute path="/product/business/:id'" component={Product}/> 
+        <PublicRoute path="/product/business/:id" component={Product}/> 
       </Switch>
     </BrowserRouter>
   );

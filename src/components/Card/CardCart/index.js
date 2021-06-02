@@ -4,55 +4,44 @@ import Adicionar from "../../../assets/icons/Combined Shape.png";
 import Retirar from "../../../assets/icons/Combined Shape2.png";
 import Excluir from "../../../assets/icons/Lixo.png";
 
-import {
-  Container,
-  Content,
-  Price,
-  Icon,
-  StoreBox,
-  StoreName,
-  ProductName,
-  Category,
-  ButtonAdd,
-  BuyButton,
-  Row,
-  Description,
-} from "./styles";
+import Product from "../../Products/index";
+
+import { Container, BuyButton } from "./styles";
 //{data}
-const CardCart = ({ data }) => {
+const CardCart = ({ data, cart }) => {
+  const Cart = () => (
+    <Product
+      storename="RodaPizza1"
+      icon={DefaultLogo}
+      productname="Pizza picanha com cheddar"
+      category="Pizza"
+      price="54,32"
+      direction="row"
+    />
+  );
+
+  const Products = () => (
+    <Product
+      storename="RodaPizza2"
+      icon={data.imgs[0].url}
+      productname={data.name}
+      description={data.description}
+      price={data.pricing}
+      direction="column"
+      time="55 min"
+    />
+  );
+
   return (
     <>
       <Container>
-        <Content>
-          <StoreName>RodaPizza</StoreName>
-          <Row>
-            <Icon src={DefaultLogo} />
-            <StoreBox>
-              <ProductName>Pizza picanha com cheddar</ProductName>
-              <Category>Pizza</Category>
-              <Price>R$ 54,32</Price>
-            </StoreBox>
-            <ButtonAdd>
-              <Icon src={Adicionar} />
-              <ProductName style={{ color: "#ECEBED" }}>0</ProductName>
-              <Icon src={Retirar} />
-            </ButtonAdd>
-          </Row>
-          <StoreName>Razzo Pizza</StoreName>
-          <Row>
-            <Icon src={DefaultLogo} />
-            <StoreBox>
-              <ProductName>Pizza picanha com cheddar</ProductName>
-              <Category>Pizza</Category>
-              <Price>R$ 54,32</Price>
-            </StoreBox>
-            <ButtonAdd>
-              <Icon src={Adicionar} />
-              <ProductName style={{ color: "#ECEBED" }}>0</ProductName>
-              <Icon src={Retirar} />
-            </ButtonAdd>
-          </Row>
-        </Content>
+        {cart ? (
+          <>
+            <Cart />
+          </>
+        ) : (
+          <Products />
+        )}
       </Container>
       <BuyButton>
         <p>Continuar comprando</p>
