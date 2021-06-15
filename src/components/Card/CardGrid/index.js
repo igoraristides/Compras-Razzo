@@ -14,7 +14,7 @@ const CardGrid = ({data}) => {
     console.log(data);
     return (
     <Container>
-        <StoreIcon src = {data.assets.logo}/>
+        <StoreIcon src = {data.assets?.logo}/>
         <Content>
             <StoreBox>
                 <StoreName>
@@ -25,10 +25,10 @@ const CardGrid = ({data}) => {
                 </StoreDescription>
             </StoreBox>
             <StoreAddress>
-               Rua {data.address.street_name}, { data.address.street_number}
+               Rua {data.address?.street_name}, { data.address?.street_number}
             </StoreAddress>
             <StoreAddress>
-            {data.address.neighborhood}
+            {data.address?.neighborhood}
             </StoreAddress>
         </Content>
 

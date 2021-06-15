@@ -4,6 +4,7 @@ import Menu from '../../../components/Menu'
 import { Container, Content } from './styles';
 import PropTypes from 'prop-types';
 import Cart from '../../../components/Card/CardCart'
+import Links from '../../../components/Links'
 import { Grid } from '@material-ui/core';
 //<Grid item xs = {12} md = {4}>
    //         {children}
@@ -14,6 +15,7 @@ const Public = ({children}) =>  {
         <Container>
           <Menu />
           <Content>
+          <Links/>
             <Grid container spacing = {2}>
             <Grid item xs = {12} md = {8}>
             {children}

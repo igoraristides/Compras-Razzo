@@ -7,7 +7,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const Head = styled.div``;
+export const Store = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+`;
 
 export const SearchContainer = styled(Form)`
 display: flex;

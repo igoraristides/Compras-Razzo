@@ -1,48 +1,36 @@
-import React, { useState, useRef } from 'react';
-import { useLocation, BrowserRouter as Router } from 'react-router-dom';
-import logo from '../../assets/logo-1.svg';
+import React, { useState, useRef } from "react";
+import { useLocation, BrowserRouter as Router } from "react-router-dom";
+import logo from "../../assets/logo-1.svg";
 
+import Avatar from "../Avatar";
+import Link from "./Link";
+import Cart from "../Cart";
 
-import Input from '../Input';
-
-import Avatar from '../Avatar';
-import Link from './Link';
-import Cart from '../Cart';
-
-import {
-  Container,
-  Navigation,
-  Logo,
-  } from './styles';
-
+import { Container, Navigation, Logo } from "./styles";
 
 const links = [
-    {
-      to: '/',
-      label: 'Dashboard',
-    },
+  {
+    to: "/",
+    label: "Dashboard",
+  },
 ];
 
 const Menu = () => {
   const { pathname } = useLocation();
   const formRef = useRef(null);
-    return (
+  return (
+    <>
       <Container>
         <Navigation>
           <Logo src={logo} />
           {links.map(({ to, label }) => (
-          <Link
-              key={to}
-              to={to}
-              label={label}
-              className="link"
-              active/>
+            <Link key={to} to={to} label={label} className="link" active />
           ))}
-
         </Navigation>
-        <Cart/>
-        <Avatar size= {46}/>
+        <Cart />
+        <Avatar size={46} />
       </Container>
+    </>
   );
 };
 

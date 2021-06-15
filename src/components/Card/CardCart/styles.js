@@ -3,26 +3,40 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
 display: flex;
 flex-direction: column;
-align-items: flex-start;
+align-items: center;
 padding: 16px;
-top: 175px;
-
-
+justify-content: space-between;
 background: #F2F5FA;
 border-radius: 7px;
 `;
 
+export const ContainerProduct = styled(Container)`
+
+background: #FFFFFF;
+border: 1px solid #E5E4E6;
+box-sizing: border-box;
+
+`;
+
 export const Content = styled.div`
 display: flex;
-flex-direction: column;
-margin-left: 16px;  
+flex-direction: column; 
 `;
 export const Price = styled.div`
 font-weight: 500;
 font-size: 14px;
 line-height: 20px;
-color: #55B84B;
-margin-top: 5px;
+padding: 10px 0px 10px 0px;
+
+${ ({color}) => 
+
+    color ? 
+    `color: ${color};` 
+    :
+    'color: #55B84B;'
+
+}
+
 `;
 
 export const Category = styled.p`
@@ -31,15 +45,48 @@ flex-direction: column;
 margin-top: 5px;
 `;
 
+export const PriceBox = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 85%;
+`;
+
+export const PriceBoxTotal = styled(PriceBox)`
+border-top: 1px solid #E5E4E5;
+`;
+export const Text = styled.p`
+font-weight: normal;
+font-size: 16px;
+line-height: 150%;
+color: #979797;
+`;
 export const Icon = styled.img`
-max-width: 65px;
+max-width: 90px;
 border-radius: 7px;
+`;
+
+export const IconTrash = styled(Icon)`
+max-width: 22px;
+margin-left: 15px;
+cursor: pointer;
+`;
+
+export const ButtonIcon = styled.img`
+max-width: 12px;
+cursor: pointer;
 `;
 
 export const StoreBox =  styled.div`
 display: flex;
 flex-direction: column;
-margin-left: 16px;
+`;
+
+export const Box =  styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
 `;
 
 export const StoreName = styled.p`
@@ -54,11 +101,12 @@ display: flex;
 flex-direction: column  ;
 justify-content: space-between;
 align-items: center;
-padding: 8px 16px;
-margin-left: 50px;
+padding: 20px 16px;
 background: #249CF2;
 box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
 border-radius: 7px;
+width: 40px;
+height: 119px;
 
 `;
 export const BuyButton = styled.div`
@@ -76,24 +124,30 @@ box-sizing: border-box;
 border-radius: 7px;
 color: #73657E;
 `;
-export const ProductName = styled.p`
+export const ProductNameCart = styled.p`
 font-weight: 500;
 font-size: 16px;
 line-height: 18px;
 color: #6D5D7A;
 `;
+
+export const ProductName = styled(ProductNameCart)`
+padding: 10px 0px 10px 0px;
+`;
+
+
 export const Row = styled.div`
 display: flex;
 flex-direction: row;
 margin-top : 15px;
 `;
 
-export const Prices = styled.p`
+export const Column = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
 
-font-weight: normal;
-font-size: 16px;
-line-height: 150%;
-color: #979797;
 `;
 
 export const Description = styled.p`
@@ -101,6 +155,5 @@ export const Description = styled.p`
 font-weight: normal;
 font-size: 10px;
 line-height: 150%;
-text-align: center;
 color: #979797
 `;
