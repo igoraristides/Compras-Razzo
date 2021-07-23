@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import formatReal from "../../../utils/formatReal";
 import DefaultLogo from "../../../assets/icons/defaulticon.png";
 import Adicionar from "../../../assets/icons/Combined Shape.png";
 import Retirar from "../../../assets/icons/Combined Shape2.png";
 import Excluir from "../../../assets/icons/Lixo.png";
-import { toast } from 'react-toastify';
+import { FiShoppingCart } from "react-icons/fi";
+import { toast } from "react-toastify";
 import masks from "../../../utils/masks";
-import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
+import { Creators as BagActions } from "../../../store/ducks/bag";
 
 import {
   Container,
@@ -30,85 +35,71 @@ import {
   Text,
   PriceBox,
   PriceBoxTotal,
+  EmplyBag,
 } from "./styles";
 //{data}
-const CardCart = ({ data, cart }) => {
-  const [showProducts, setShowProducts] = useState([]);
-  const [countproduct, setCountProduct] = useState(1);
-  const [finalPrice, setFinalPrice] = useState(0);
-  const [addonsCart, setAddonsCart] = useState([]);
-
+const CardCart = ({ data, quantity, cart }) => {
   const dispatch = useDispatch();
+  const { products: bag } = useSelector((state) => state.bag);
 
-  
-  const handleClick = async () => {
-    try {
+  const quantities = bag.find(
+    (element) => element.product._id === data._id
+  )?.quantity;
 
-     dispatch(addProduct({ ...data }, addonsCart, countproduct));
+  console.log(quantities);
+  function addProduct(quantityParams) {
+    const quantityAux = quantityParams || quantity;
 
-      setCountProduct(1);
+    dispatch(BagActions.addProduct(data, quantityAux + 1));
+  }
 
-      toast.success('Produto adicionado na sacola');
-    } catch (error) {
-      console.log(error);
-      toast.error('Não foi possível adicionar seu item à sacola');
+  function removeProduct(quantityParams) {
+    const quantityAux = quantityParams || quantity;
+    if (quantityAux < 1) {
+      return;
+    }
+
+    if (quantityAux === 1) {
+      dispatch(BagActions.removeProduct(data._id));
+    } else {
+      dispatch(BagActions.addProduct(data, quantityAux - 1));
     }
   }
 
-  const addProductQuantity = useCallback(() => {
-    setCountProduct(countproduct + 1);
-  }, [countproduct]);
-
-  const removeProduct = useCallback(() => {
-    if (
-      countproduct === 0
-        ? setCountProduct(0)
-        : setCountProduct(countproduct - 1)
-    );
-  }, [countproduct]);
-
+  function clearProduct() {
+    dispatch(BagActions.removeProduct(data._id));
+  }
 
   const Cart = () => (
     <>
       <Container>
         <Box>
           <Content>
-            <StoreName>RodaPizza</StoreName>
+            <StoreName>Razzo</StoreName>
             <Row>
-              <Icon src={DefaultLogo} style={{ width: 65, height: 65 }} />
+              <Icon
+                src={data?.imgs[0]?.url}
+                style={{ width: 65, height: 65 }}
+              />
               <StoreBox style={{ marginLeft: "16px" }}>
-                <ProductNameCart>Pizza picanha com cheddar</ProductNameCart>
-                <Category>Pizza</Category>
-                <Price>R$ 54,32</Price>
+                <ProductNameCart>{data?.name}</ProductNameCart>
+                <Category>Pizza, Lanche e Sushi</Category>
+                <Price>R$ {formatReal(data?.pricing)}</Price>
               </StoreBox>
             </Row>
           </Content>
           <ButtonAdd style={{ marginLeft: "16px" }}>
-            <ButtonIcon src={Adicionar} />
-            <p style={{ color: "#ECEBED" }}>0</p>
-            <ButtonIcon src={Retirar} />
+            <ButtonIcon src={Adicionar} onClick={() => addProduct()} />
+            <p style={{ color: "#ECEBED" }}>{quantity}</p>
+            <ButtonIcon src={Retirar} onClick={() => removeProduct()} />
           </ButtonAdd>
-          <IconTrash src={Excluir} style={{ width: "22.38px" }} />
+          <IconTrash
+            src={Excluir}
+            style={{ width: "22.38px" }}
+            onClick={clearProduct}
+          />
         </Box>
-        <PriceBox>
-          <Text>Subtotal:</Text>
-          <Price style={{ color: "#000" }}>R$ 200,04</Price>
-        </PriceBox>
-        <PriceBox>
-          <Text>Entrega:</Text>
-          <Price color = "#000" >R$ 7,90</Price>
-        </PriceBox>
-        <PriceBoxTotal>
-          <Text style={{ color: "#000" }}>Total:</Text>
-          <Price>R$ 212,22</Price>
-        </PriceBoxTotal>
       </Container>
-      <BuyButton>
-        <p>Continuar comprando</p>
-      </BuyButton>
-      <BuyButton style={{ color: "#FFFFFF", background: "#249CF2" }}>
-        <p>Confirmar a compra</p>
-      </BuyButton>
     </>
   );
 
@@ -124,7 +115,7 @@ const CardCart = ({ data, cart }) => {
                 <Description>{data.description}</Description>
                 <Description>Tempo de preparo: 55min</Description>
                 <Price style={{ fontSize: "18px" }}>
-                  R$ {masks.currency(data.pricing)}
+                  R$ {formatReal(data?.pricing)}
                 </Price>
               </StoreBox>
             </Column>
@@ -132,9 +123,15 @@ const CardCart = ({ data, cart }) => {
           <ButtonAdd
             style={{ flexDirection: "row", width: "119px", height: "40px" }}
           >
-            <ButtonIcon src={Adicionar} />
-            <p style={{ color: "#ECEBED" }}>{length}</p>
-            <ButtonIcon src={Retirar} />
+            <ButtonIcon
+              src={Adicionar}
+              onClick={() => addProduct(quantities)}
+            />
+            <p style={{ color: "#ECEBED" }}>{quantities || 0}</p>
+            <ButtonIcon
+              src={Retirar}
+              onClick={() => removeProduct(quantities)}
+            />
           </ButtonAdd>
         </Box>
       </ContainerProduct>
@@ -145,13 +142,23 @@ const CardCart = ({ data, cart }) => {
     <>
       {cart ? (
         <>
-        <Cart />
+          <Cart />
         </>
       ) : (
         <Products />
       )}
     </>
   );
+};
+CardCart.defaultProps = {
+  cart: false,
+  quantity: 0,
+};
+
+CardCart.propTypes = {
+  cart: PropTypes.bool,
+  quantity: PropTypes.number,
+  data: PropTypes.shape({}).isRequired,
 };
 
 export default CardCart;

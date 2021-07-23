@@ -1,19 +1,20 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  padding: 0 10px;  
-
-  ${({ margin }) => css`margin: ${margin ? margin : '30px 0 0'};` }
+  ${({ margin }) =>
+    css`
+      margin: ${margin};
+    `}
 
   ${({ width }) => {
-    return css `
+    return css`
       width: ${width}px;
       max-width: ${width}px;
 
       @media (max-width: ${width + 20}px) {
         width: auto !important;
       }
-    `
+    `;
   }};
 `;
 

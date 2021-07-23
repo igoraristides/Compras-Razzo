@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import fadeIn from '../../styles/animations/fadeIn'
+import styled, { css } from "styled-components";
+import fadeIn from "../../styles/animations/fadeIn";
 
 export const Container = styled.div`
   ${fadeIn};
@@ -13,17 +13,15 @@ export const Field = styled.input`
   font-size: 16px;
 
   padding: 14px;
-  margin-bottom: 40px;
-  margin-left: 20px;
 
   border-radius: 7px;
   transition: border-color 200ms linear;
-  
-  border: 1px solid #E5E4E6;
+
+  border: 1px solid #e5e4e6;
   box-sizing: border-box;
 
-
-  :hover, :focus {
+  :hover,
+  :focus {
     border-color: #aeaeb2;
   }
 
@@ -33,42 +31,40 @@ export const Field = styled.input`
   }
 
   width: 100%;
-  
+
   max-width: ${({ width }) => width || `100%`}
+    ${({ error }) =>
+      error &&
+      css`
+        border-color: #ff3b2f;
 
-  ${({ error }) =>
-    error &&
-    css`
-      border-color: #ff3b2f;
-
-      &:hover {
-        border-color: #f83019;
-      }
-    `}
-
+        &:hover {
+          border-color: #f83019;
+        }
+      `}
     ${({ icon }) => {
-    if (icon !== '') {
-      return css`
-        background-image: (${icon});
-        background-size: 20px 20px;
-        background-repeat: no-repeat;
-        background-position: center right 16px;
-      `;
-    }
-  }}
+      if (icon !== "") {
+        return css`
+          background-image: (${icon});
+          background-size: 20px 20px;
+          background-repeat: no-repeat;
+          background-position: center right 16px;
+        `;
+      }
+    }};
 `;
 
 export const Label = styled.label`
   display: inline-block;
   width: 100%;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   margin-bottom: 5px;
 
   ${({ color }) => {
-    if (color === 'black')
+    if (color === "black")
       return css`
-        color: '#000000';
+        color: "#000000";
       `;
 
     return css`

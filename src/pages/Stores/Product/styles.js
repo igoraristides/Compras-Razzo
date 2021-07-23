@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-import Form from '../../../components/Form';
-
+import styled from "styled-components";
 
 export const Container = styled.div`
   flex: 1;
@@ -12,18 +10,10 @@ export const Store = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-
 `;
 
-export const SearchContainer = styled(Form)`
-display: flex;
-margin-top: 30px;
-width: auto;
-height: 32px;
-justify-content: right;
-`;
-export const Content =  styled.div`
-display: flex;
-flex-direction: column;
-margin-left: 16px;  
+export const Content = styled.div`
+  display: flex;
+  margin-top: 20px;
+  justify-content: flex-end;
 `;

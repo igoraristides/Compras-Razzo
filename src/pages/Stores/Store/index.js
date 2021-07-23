@@ -1,63 +1,63 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from "react";
 
-import api from '../../../services/api';
-import { Pagination } from '@material-ui/lab';
+import api from "../../../services/api";
+import { Pagination } from "@material-ui/lab";
+import Loader from "react-loader-spinner";
 
-import Card from '../../../components/Card/CardGrid'
-import Grid from '@material-ui/core/Grid';
-import { Container } from './styles';
-import Input from '../../../components/Input';
-import Form from '../../../components/Form';
-import { Link } from 'react-router-dom';
-
+import Card from "../../../components/Card/CardGrid";
+import Grid from "@material-ui/core/Grid";
+import { Container, Content, Section } from "./styles";
+import Input from "../../../components/Input";
+import Form from "../../../components/Form";
+import { Link } from "react-router-dom";
 
 const Stores = () => {
-  const formRef = useRef(null);
   const [business, setBusiness] = useState({ data: [] });
-  
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef(null);
+
   const loadingBusiness = async () => {
-    const { data } = await api.get('/business');
+    setLoading(true);
+    const { data } = await api.get("/business");
     setBusiness(data);
+    setLoading(false);
   };
-  console.log(business);
+
   useEffect(() => {
     loadingBusiness(setBusiness);
   }, []);
+
   return (
     <Container>
-        <Form width={350} ref={formRef}>
+      <Form width={350} ref={formRef}>
         <Input
           name="search"
-          placeholder="Busque por um produto"
+          placeholder="Busque por um estabelecimento"
           variant="border"
-          icon = "search"
+          icon="search"
           fullWidth
         />
-        </Form>
-        
-      <Grid container spacing={3}>
-        {business.data.map((store) => (
-          <Grid key={store._id} item xs={12} md = {4}>
-            <Link to= {`/product/business/${store._id}`}>
-               <Card data={store}/>
-            </Link>
+      </Form>
+      <Section>
+        {loading ? (
+          <Loader type="Bars" color="#249CF2" height={50} width={50} />
+        ) : (
+          <Grid container spacing={3}>
+            {business.data.map((store) => (
+              <Grid key={store._id} item xs={12} md={4}>
+                <Link to={`/product/business/${store._id}`}>
+                  <Card data={store} />
+                </Link>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+        )}
+      </Section>
+      <Content>
+        <Pagination count={1} size="small" />
+      </Content>
     </Container>
   );
 };
 
 export default Stores;
-
-//icon="search"
-
-    //        <Link
-          //      key= "/product/business/${id}"
-            //    to= "/product/business/${id}"
-            //    className="link"
-          //  >
-            //  <Card data={store}/>
-          //  </Link>
-            
-            
