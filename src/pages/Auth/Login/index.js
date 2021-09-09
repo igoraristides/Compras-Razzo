@@ -13,6 +13,7 @@ import LoadingModal from "../../../components/LoadingModal";
 import { Creators as AuthActions } from "../../../store/ducks/auth";
 import yupValidate from "../../../utils/yupValidate";
 import { loginSchema } from "../../../validators/auth.schema";
+import { toast } from "react-toastify";
 
 import { Container, Content, Logo, Heading } from "./styles";
 

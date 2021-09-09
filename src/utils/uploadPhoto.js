@@ -1,9 +1,9 @@
-import api from '~/services/api';
+import api from "../services/api";
 
 const sendFile = async (image, route) => {
   const data = new FormData();
 
-  data.append('photo', image);
+  data.append("photo", image);
 
   try {
     const response = await api.post(route, data);

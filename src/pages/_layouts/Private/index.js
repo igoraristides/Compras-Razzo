@@ -11,17 +11,7 @@ const Private = ({ children }) => {
   return (
     <Container>
       <Menu />
-      <Content>
-        <Links />
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={8}>
-            {children}
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Cart cart />
-          </Grid>
-        </Grid>
-      </Content>
+      <Content>{children}</Content>
     </Container>
   );
 };

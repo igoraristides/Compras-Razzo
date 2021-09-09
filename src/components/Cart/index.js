@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 import CardCart from "../Card/CardCart";
 import formatReal from "../../utils/formatReal";
+import { useHistory } from "react-router";
 
 import {
   Container,
@@ -21,13 +22,11 @@ import {
 function Cart() {
   const { products: bag } = useSelector((state) => state.bag);
   const [loading, setLoading] = useState(false);
-
-  const frete = 500;
-  console.log(bag);
+  const history = useHistory();
+  const frete = 5000;
 
   function handleClick() {
-    setLoading(true);
-    setTimeout(() => setLoading(false), 3000);
+    history.push(`/addCard`);
   }
 
   const getTotal = () => {
@@ -83,9 +82,6 @@ function Cart() {
           <Price>R$ {formatReal(getTotal() + frete)}</Price>
         </PriceBoxTotal>
       </Container>
-      <BuyButton onClick={handleClick}>
-        <p>Continuar comprando</p>
-      </BuyButton>
       <BuyButton
         style={{ color: "#FFFFFF", background: "#249CF2" }}
         onClick={handleClick}

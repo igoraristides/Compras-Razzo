@@ -22,17 +22,43 @@ export const Container = styled.button`
   -webkit-appearance: none;
   cursor: pointer;
 
-  text-align: center;
+  height: ${({ height }) => height || 48}px;
+
+  display: flex;
+  align-items: center;
+  justify-content: ${({ justifyContent }) => justifyContent || "center"};
 
   transition: background-color 200ms linear, box-shadow 200ms linear,
     border-color 200ms linear;
 
   border-radius: ${button.borderRadius};
 
+  .customsvg {
+    display: flex;
+    align-items: center;
+    svg {
+      width: ${({ iconSize }) => iconSize || 24}px;
+      height: ${({ iconSize }) => iconSize || 24}px;
+
+      ${({ iconPosition }) => {
+        if (iconPosition === "left")
+          return css`
+            margin-right: 16px;
+          `;
+
+        if (iconPosition === "right")
+          return css`
+            margin-left: 16px;
+          `;
+      }}
+    }
+  }
+
   ${({ size }) => {
     const s = sizes[size];
 
     return css`
+      height: ${s.height};
       font-size: ${s.fontSize};
       padding: ${s.padding};
       font-weight: ${s.fontWeight};
@@ -43,14 +69,6 @@ export const Container = styled.button`
     fullWidth &&
     css`
       width: 100%;
-    `}
-
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      cursor: not-allowed;
-      pointer: normal;
-      opacity: 60%;
     `}
 
   ${({ color, variant }) => {
@@ -65,6 +83,7 @@ export const Container = styled.button`
         }
       `;
     }
+
     if (variant === "outline") {
       return css`
         color: ${config("background", color)};
@@ -83,17 +102,19 @@ export const Container = styled.button`
       border: 1px solid ${config("border", color, true)};
 
       &:not(:disabled):hover {
-        border-color: ${darken(0.2, config("border", color, true))};
-        background: ${darken(0.2, config("background", color, true))};
+        border-color: ${darken(0.1, config("border", color, true))};
+        background: ${darken(0.1, config("background", color, true))};
       }
     `;
-  }}}
+  }}
+
+${({ disable }) =>
+    disable &&
+    css`
+      cursor: not-allowed;
+      cursor: normal;
+      opacity: 60%;
+    `}
 `;
 
-export const LoaderComponent = styled(Loader)`
-  margin-bottom: 0px;
-  margin: auto;
-  svg {
-    margin-bottom: 0px !important;
-  }
-`;
+export const LoaderComponent = styled(Loader)``;

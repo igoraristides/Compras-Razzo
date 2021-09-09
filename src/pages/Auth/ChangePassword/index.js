@@ -1,18 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
-import { Grid } from '@material-ui/core';
+import { Grid } from "@material-ui/core";
 
-import Button from '~/components/Button';
-import Form from '~/components/Form';
-import Input from '~/components/Input';
-import useToast from '~/hooks/useToast';
-import api from '~/services/api';
-import yupValidate from '~/utils/yupValidate';
-import { updatePasswordSchema } from '~/validators/auth.schema';
+import Button from "../../../components/Button";
+import Form from "../../../components/Form";
+import Input from "../../../components/Input";
+import useToast from "../../../hooks/useToast";
+import api from "../../../services/api";
+import yupValidate from "../../../utils/yupValidate";
+import { updatePasswordSchema } from "../../../validators/auth.schema";
 
-import { Container } from './styles';
+import { Container } from "./styles";
 
-const Profile = ({ history }) => {
+const ChangePassword = ({ history }) => {
   const formRef = useRef(null);
 
   const toast = useToast();
@@ -30,12 +30,12 @@ const Profile = ({ history }) => {
         throw errors;
       }
 
-      await api.put('/user/me/password', data);
+      await api.put("/user/me/password", data);
 
-      return toast.successToast('Atualização feita com sucesso.');
+      return toast.successToast("Atualização feita com sucesso.");
     } catch (error) {
       if (error.response) {
-        toast.errorToast('Erro ao atualizar sua senha, tente novamente.');
+        toast.errorToast("Erro ao atualizar sua senha, tente novamente.");
       }
       return formRef.current.setErrors(error);
     }
@@ -82,4 +82,4 @@ const Profile = ({ history }) => {
   );
 };
 
-export default Profile;
+export default ChangePassword;

@@ -2,8 +2,7 @@ import { ref } from "yup";
 import yup from "../libs/yup";
 
 const schema = yup.object().shape({
-  first_name: yup.string().required().label("Nome"),
-  last_name: yup.string().required().label("Sobrenome"),
+  name: yup.string().required().label("Nome"),
   cpf: yup.string().required().label("CPF"),
   phone: yup.string().required().label("Telefone"),
   email: yup.string().email().required().label("E-mail"),

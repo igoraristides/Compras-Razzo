@@ -1,11 +1,11 @@
-import { createActions, createReducer } from "reduxsauce";
-import Immutable from "seamless-immutable";
+import { createActions, createReducer } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
 
 /* Types & Actions Creators */
 export const { Types, Creators } = createActions({
-  setUser: ["user"],
-  getMeRequest: [""],
-  getMeSuccess: ["user"],
+  setUser: ['user'],
+  getMeRequest: [''],
+  getMeSuccess: ['user'],
   authSignOut: [],
 });
 

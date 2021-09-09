@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable';
 /* Types & Actions Creators */
 export const { Types, Creators } = createActions({
   authSignInRequest: ['email', 'password'],
-  authSignInSuccess: ['token'],
+  authSignInSuccess: ['token', 'admin'],
   authSignInFailure: [],
   authSignOut: [],
 });
@@ -14,18 +14,18 @@ const INITIAL_STATE = Immutable({
   token: null,
   signed: false,
   loading: false,
-  user: null,
+  admin: false,
 });
 
 /* Reducers */
 const authSignInRequest = (state) => state.merge({ loading: true });
 
-const authSignInSuccess = (state, { token, user }) =>
+const authSignInSuccess = (state, { token, admin }) =>
   state.merge({
     signed: true,
     loading: false,
-    user,
     token,
+    admin,
   });
 
 const authSignInFailure = (state) =>

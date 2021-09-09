@@ -20,7 +20,7 @@ const transformerConfig = {
 };
 
 const persistConfig = {
-  key: "boilerplate", // trocar de acordo com projeto
+  key: "Compras Razzo", // trocar de acordo com projeto
   storage,
   stateReconciler: seamlessImmutableReconciler,
   transforms: [seamlessImmutableTransformCreator(transformerConfig)],

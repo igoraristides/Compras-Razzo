@@ -28,14 +28,9 @@ import {
   Description,
   ButtonIcon,
   ContainerProduct,
-  BuyButton,
   ProductNameCart,
   Box,
   IconTrash,
-  Text,
-  PriceBox,
-  PriceBoxTotal,
-  EmplyBag,
 } from "./styles";
 //{data}
 const CardCart = ({ data, quantity, cart }) => {
@@ -124,13 +119,13 @@ const CardCart = ({ data, quantity, cart }) => {
             style={{ flexDirection: "row", width: "119px", height: "40px" }}
           >
             <ButtonIcon
-              src={Adicionar}
-              onClick={() => addProduct(quantities)}
+              src={Retirar}
+              onClick={() => removeProduct(quantities)}
             />
             <p style={{ color: "#ECEBED" }}>{quantities || 0}</p>
             <ButtonIcon
-              src={Retirar}
-              onClick={() => removeProduct(quantities)}
+              src={Adicionar}
+              onClick={() => addProduct(quantities)}
             />
           </ButtonAdd>
         </Box>

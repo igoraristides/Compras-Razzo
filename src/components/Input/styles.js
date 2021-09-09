@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+
 import fadeIn from "../../styles/animations/fadeIn";
 
 export const Container = styled.div`
@@ -12,54 +13,80 @@ export const Field = styled.input`
 
   font-size: 16px;
 
-  padding: 14px;
-
-  border-radius: 7px;
+  padding: 0px 10px;
+  height: 45px;
+  border-radius: 100px;
   transition: border-color 200ms linear;
-
-  border: 1px solid #e5e4e6;
-  box-sizing: border-box;
-
+  border: 1px solid ${({ theme }) => theme.colors.border};
   :hover,
   :focus {
     border-color: #aeaeb2;
   }
 
   &::placeholder {
-    font-size: 16px;
-    color: #aeaeb2;
+    font-size: 13px;
+    color: #cedbf7;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
   }
 
   width: 100%;
 
-  max-width: ${({ width }) => width || `100%`}
-    ${({ error }) =>
-      error &&
-      css`
-        border-color: #ff3b2f;
+  max-width: ${({ width }) => width || `100%`};
 
-        &:hover {
-          border-color: #f83019;
-        }
-      `}
-    ${({ icon }) => {
-      if (icon !== "") {
-        return css`
-          background-image: (${icon});
-          background-size: 20px 20px;
-          background-repeat: no-repeat;
-          background-position: center right 16px;
-        `;
+  ${({ error }) =>
+    error &&
+    css`
+      border-color: #ff3b2f;
+
+      &:hover {
+        border-color: #f83019;
       }
-    }};
+    `};
+`;
+
+export const FieldContainer = styled.div`
+  position: relative;
+
+  .eyeBtn {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transform: translate(-50%);
+    right: 1rem;
+
+    svg {
+      width: 24px;
+      height: auto;
+      cursor: pointer;
+      color: ${({ theme }) => theme.colors.border};
+    }
+
+    :hover {
+      svg {
+        color: ${({ theme }) => theme.colors.title};
+      }
+    }
+  }
 `;
 
 export const Label = styled.label`
   display: inline-block;
   width: 100%;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: bold;
   margin-bottom: 5px;
+  margin-top: 15px;
 
   ${({ color }) => {
     if (color === "black")
@@ -68,7 +95,7 @@ export const Label = styled.label`
       `;
 
     return css`
-      color: ${color};
+      color: ${({ theme }) => theme.colors.secondary};
     `;
   }}
 `;

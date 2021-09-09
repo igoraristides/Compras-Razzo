@@ -3,11 +3,12 @@ import api from "../../../services/api";
 import Grid from "@material-ui/core/Grid";
 import { Container, Store, Content } from "./styles";
 import { Pagination } from "@material-ui/lab";
-import Link from "../../../components/Link";
+import Links from "../../../components/Links";
 import CardCart from "../../../components/Card/CardCart";
 import CardGrid from "../../../components/Card/CardGrid";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
+import Cart from "../../../components/Cart";
 
 const Products = () => {
   const [business, setBusiness] = useState({});
@@ -35,27 +36,37 @@ const Products = () => {
   }, [id]);
 
   return (
-    <Container>
-      {loading ? (
-        <Loader type="Bars" color="#249CF2" height={50} width={50} />
-      ) : (
-        <>
-          <Store>
-            <CardGrid data={business} />
-          </Store>
-          <Grid container spacing={3}>
-            {products.data.map((product) => (
-              <Grid key={product._id} item xs={12} md={4}>
-                <CardCart data={product} />
-              </Grid>
-            ))}
-          </Grid>
-        </>
-      )}
-      <Content>
-        <Pagination count={1} size="small" />
-      </Content>
-    </Container>
+    <>
+      <Links />
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={8}>
+          <Container>
+            {loading ? (
+              <Loader type="Bars" color="#249CF2" height={50} width={50} />
+            ) : (
+              <>
+                <Store>
+                  <CardGrid data={business} />
+                </Store>
+                <Grid container spacing={3}>
+                  {products.data.map((product) => (
+                    <Grid key={product._id} item xs={12} md={4}>
+                      <CardCart data={product} />
+                    </Grid>
+                  ))}
+                </Grid>
+              </>
+            )}
+            <Content>
+              <Pagination count={1} size="small" />
+            </Content>
+          </Container>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Cart cart />
+        </Grid>
+      </Grid>
+    </>
   );
 };
 

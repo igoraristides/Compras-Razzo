@@ -4,7 +4,6 @@ import logo from "../../assets/logo-1.svg";
 
 import Avatar from "../Avatar";
 import Link from "./Link";
-import Cart from "../CartIcon";
 
 import { Container, Navigation, Logo, Row } from "./styles";
 import PopMenu from "./PopMenu";
@@ -28,7 +27,6 @@ const Menu = () => {
             ))}
           </Row>
           <Row>
-            <Cart />
             <PopMenu />
           </Row>
         </Navigation>

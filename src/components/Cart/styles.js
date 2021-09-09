@@ -103,6 +103,7 @@ export const BuyButton = styled.div`
   align-items: center;
   padding: 16px 107px;
   margin-top: 15px;
+  cursor: pointer;
 
   background: #f2f5fa;
 

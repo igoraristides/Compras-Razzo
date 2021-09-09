@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { Container, Content, Img, Text } from "./styles";
 import ArrowRight from "../../assets/icons/arrow.alt.right.svg";
+import Carrinho from "../../assets/icons/carrinho.svg";
 import ArrowLeft from "../../assets/icons/arrow.alt.down.svg";
 
 const Links = () => {
@@ -25,9 +26,8 @@ const Links = () => {
             <Text style={{ color: "#6D5D7A" }}>Home</Text>
           </Link>
           <Img src={ArrowRight} />
-          <Link to="/">
-            <Text style={{ color: "#249CF2" }}>Sacola</Text>
-          </Link>
+          <Text style={{ color: "#249CF2" }}>Carrinho</Text>
+          <Img src={Carrinho} />
         </Content>
       </Container>
     </>
